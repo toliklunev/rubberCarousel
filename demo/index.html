@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Главная</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta name="author" content="Anatoly Lunev, http://toliklunev.ru" />
+		<link rel="shortcut icon" href="favicon.png" type="image/x-icon"/>
+		<!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+		<script type="text/javascript" src="jquery-1.7.2.min.js"></script>
+		<script type="text/javascript" src="../source/jquery.rubbercarousel.js"></script>
+		<link rel="stylesheet" href="../source/jquery.rubbercarousel.css" media="all"/>
+	</head>
+	<body>
+		<style>
+			#wrapper{
+				margin: 50px auto 0;
+				width: 80%;
+			}
+
+			#rubber2{
+				margin-top: 50px;
+				text-align: center;
+			}
+
+			#rubber2 img{
+				max-width: 100%;
+			}
+		</style>
+		<div id="wrapper">
+			<div id="rubber" class="rubber_carousel">
+				<div>
+					<p>1 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut, nostrum, velit facere fuga voluptatem recusandae ad ipsam quod. Voluptatum amet quod error nemo alias reiciendis sequi animi sed ut voluptas!</p>
+				</div>
+				<div>
+					<p>2 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Id, a minus dolorum amet debitis dignissimos mollitia maiores consequuntur! Neque, amet quod omnis voluptate aperiam ab libero accusantium ipsum harum sunt.</p>
+				</div>
+				<div>
+					<p>3 Lorem ipsum dolor sit amet, consectetur adipisicing elit. At, tempora, saepe, id velit non dolore modi esse maxime expedita consequuntur ipsum excepturi laudantium voluptatibus soluta ea quam porro vero sapiente.</p>
+				</div>
+				<div>
+					<p>4 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quis, dolor, sed, ab at officia distinctio quam veniam odio neque perferendis minus commodi veritatis consectetur illo ex. Assumenda optio mollitia vitae.</p>
+				</div>
+				<div>
+					<p>5 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus, ipsum eos minima explicabo tenetur sed reiciendis sapiente earum facere ut! Ad sapiente sunt in sed omnis cum pariatur minus tenetur.</p>
+				</div>
+				<div>
+					<p>6 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nemo, non nesciunt dolor dolores illo ut quos laudantium earum vel eligendi repellendus facilis dolorum rem quisquam aspernatur quam impedit? Deserunt, sequi.</p>
+				</div>
+				<div>
+					<p>7 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nemo, non nesciunt dolor dolores illo ut quos laudantium earum vel eligendi repellendus facilis dolorum rem quisquam aspernatur quam impedit? Deserunt, sequi.</p>
+				</div>
+				<div>
+					<p>8 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nemo, non nesciunt dolor dolores illo ut quos laudantium earum vel eligendi repellendus facilis dolorum rem quisquam aspernatur quam impedit? Deserunt, sequi.</p>
+				</div>
+			</div>
+			<div id="rubber2" class="rubber_carousel" style="margin-top: 1000px;">
+				<div><img src="photo/1.jpg" /></div>
+				<div><img src="photo/2.jpg" /></div>
+				<div><img src="photo/3.jpg" /></div>
+				<div><img src="photo/4.jpg" /></div>
+				<div><img src="photo/5.jpg" /></div>
+				<div><img src="photo/6.jpg" /></div>
+				<div><img src="photo/7.jpg" /></div>
+				<div><img src="photo/8.jpg" /></div>
+			</div>
+			<script type="text/javascript">
+				$('#rubber').rubberCarousel({
+					visible: 3,
+					buttons: true,
+					scroll: 1,
+					keybind: true,
+					min_item_width : 250
+				});
+
+				$('#rubber2').rubberCarousel({
+					visible: 2,
+					buttons: true,
+					scroll: 2,
+					keybind: true,
+					pagination: true
+				});
+			</script>
+		</div>
+	</body>
+</html>

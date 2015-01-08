@@ -1,0 +1,29 @@
+.rubber_carousel{
+
+	*{
+		position: relative;
+	}
+
+	.wrapper{
+		overflow: hidden;
+
+		> div{
+			white-space: nowrap;
+		}
+	}
+
+	&:not(.-js-using){
+		.wrapper > div > div{
+			-webkit-transition: .5s left ease;
+			-moz-transition: .5s left ease;
+			-o-transition: .5s left ease;
+			transition: .5s left ease;
+		}
+	}
+
+	.item{
+		display: inline-block;
+		vertical-align: top;
+		white-space: normal;
+	}
+}
