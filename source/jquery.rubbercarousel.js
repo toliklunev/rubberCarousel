@@ -6,24 +6,25 @@
 	jQuery.fn.rubberCarousel = function(options){
 
 		var configuration = {
-			visible          : 1,
-			scroll           : 1,
-			start            : 0,
-			duration         : 500,
-			easing           : 'swing',
-			wrap             : 'normal',
-			prefix           : false,
-			keybind          : false,
-			buttons          : false,
-			pagination       : false,
-			buttons_style    : false,
-			pagination_style : false,
-			abort_on_error   : true,
-			min_item_width   : false,
-			disable_buttons  : true,
-			jsUsing          : false,
-			counter          : false, // TODO
-			auto             : false, // TODO
+			visible           : 1,
+			scroll            : 1,
+			start             : 0,
+			duration          : 500,
+			easing            : 'swing',
+			wrap              : 'normal',
+			prefix            : false,
+			keybind           : false,
+			buttons           : false,
+			pagination        : false,
+			buttons_style     : false,
+			pagination_style  : false,
+			pagination_cyclic : true,
+			abort_on_error    : true,
+			min_item_width    : false,
+			disable_buttons   : true,
+			js_using          : false,
+			counter           : false, // TODO
+			auto              : false, // TODO
 			before: function(){}
 		};
 
@@ -66,6 +67,7 @@
 				var $pagination, $pagination_items;
 				var pages = Math.ceil(items_size / configuration.scroll);
 				var page  = Math.ceil(configuration.start / configuration.scroll);
+				var pagination_offset = 0;
 			}
 
 			if(visible > 1){
@@ -142,14 +144,12 @@
 					var $page = $('<li></li>').append($link).appendTo($ul);
 
 					$link.click(function(){
-						$carousel.trigger('spin', (i * configuration.scroll));
+						$carousel.trigger('spin', ((i * configuration.scroll) - pagination_offset) % items_size);
 						return false;
 					});
 				});
 
 				$pagination_items = $ul.children();
-
-
 				$carousel.append($pagination);
 			}
 
@@ -276,7 +276,7 @@
 				/* Карусель цикличиская */
 				case 'circular':
 
-					configuration.jsUsing = true;
+					configuration.js_using = true;
 
 					var spin = function(to){
 						// to %= items_size;
@@ -299,6 +299,16 @@
 
 								left        = 0;
 								current     = 0;
+								
+								if(configuration.pagination){
+									if(configuration.pagination_cyclic){
+										$ul.append($pagination_items.filter(':first-child'));
+									}
+									
+									else{
+										pagination_offset--;
+									}
+								}
 							}
 
 							else{
@@ -315,10 +325,20 @@
 								left        = max_left;
 								current     = max_current;
 
+
+								if(configuration.pagination){
+									if(configuration.pagination_cyclic){
+										$ul.prepend($pagination_items.filter(':last-child'));
+									}
+									
+									else{
+										pagination_offset++;
+									}
+								}
 							}
 
 							$items = $list.children('div');
-							
+
 							// setTimeout(function(){
 							// 	$citem_clone.remove();
 							// 	$items = $list.children('li');
@@ -333,7 +353,7 @@
 					break;
 			}
 
-			if(configuration.jsUsing){
+			if(configuration.js_using){
 				$carousel.addClass(prefix + '-js-using');
 			}
 
@@ -357,14 +377,14 @@
 				}
 
 				if(configuration.pagination){
-					page  = Math.ceil(current / configuration.scroll);
+					page = Math.ceil(current / configuration.scroll);
 
-					$pagination_items.eq(page)
+					$pagination_items.eq((page + pagination_offset) % items_size)
 					.addClass('active').siblings()
 					.removeClass('active');
 				}
 
-				if(configuration.jsUsing){
+				if(configuration.js_using){
 					$list[noanim ? 'css' : 'animate']({
 						left : left + '%'
 					}, {
@@ -422,7 +442,7 @@
 					$(window).unbind('keyup', keyup);
 				}
 
-				if(configuration.jsUsing){
+				if(configuration.js_using){
 					$carousel.removeClass(prefix + '-js-using');
 				}
 			});

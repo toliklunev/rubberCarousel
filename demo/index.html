@@ -25,6 +25,11 @@
 			#rubber2 img{
 				max-width: 100%;
 			}
+			
+			#rubber2 .pagination .active a{
+				text-decoration: none;
+				color: #000;
+			}
 		</style>
 		<div id="wrapper">
 			<div id="rubber" class="rubber_carousel">
@@ -73,9 +78,10 @@
 				});
 
 				$('#rubber2').rubberCarousel({
-					visible: 2,
+					wrap: 'circular',
+					visible: 1,
 					buttons: true,
-					scroll: 2,
+					scroll: 1,
 					keybind: true,
 					pagination: true
 				});
