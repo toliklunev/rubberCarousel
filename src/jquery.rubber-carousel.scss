@@ -21,6 +21,11 @@
 		position: relative;
 	}
 	
+	&__prev,
+	&__next{
+		
+	}
+	
 	&.is-css-animation{
 		#{$b}__list{
 			-webkit-transition: .5s left ease;
