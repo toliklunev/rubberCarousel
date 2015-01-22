@@ -1,12 +1,12 @@
 {
   "name": "rubber-carousel",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "homepage": "https://github.com/codefucker/rubberCarousel",
   "authors": [
     "codefucker <toliklunev@ya.ru>"
   ],
   "description": "Simplest way for init stretchable carousels.",
-  "main": "[src/jquery.rubbercarousel.js, jquery.rubbercarousel.css]",
+  "main": "[src/jquery.rubber-carousel.js, jquery.rubber-carousel.css]",
   "keywords": [
     "carousel",
     "rubber",
