@@ -109,6 +109,7 @@
 
 			/* Если элементов недостаточно, ничего не делаем */
 			if(items_size <= visible && configuration.abort_on_error){
+				$carousel.addClass('is-init');
 				$buttons.hide();
 				return false;
 			}
