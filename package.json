@@ -1,0 +1,11 @@
+{
+  "name": "rubber-carousel",
+  "repository": "https://github.com/codefucker/rubberCarousel",
+  "devDependencies": {
+    "gulp": "^3.8.10",
+    "gulp-concat": "^2.4.3",
+    "gulp-rename": "^1.2.0",
+    "gulp-replace": "^0.5.2",
+    "gulp-uglify": "^1.1.0"
+  }
+}

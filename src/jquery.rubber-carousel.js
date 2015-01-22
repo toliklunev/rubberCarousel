@@ -1,9 +1,9 @@
-/* rubberCarousel v0.1 | http://github.com/codefucker/rubberCarousel
- * © Anatoly Lunev | toliklunev.ru | toliklunev@gmail.com
- * Licensed under the MIT License */
+/*! rubberCarousel v0.1 | http://github.com/codefucker/rubberCarousel
+ *  © Anatoly Lunev | toliklunev.ru | toliklunev@gmail.com
+ *  Licensed under the MIT License */
 
 (function($){
-	jQuery.fn.rubberCarousel = function(options){
+	$.fn.rubberCarousel = function(options){
 
 		var configuration = {
 			visible           : 1,
@@ -474,4 +474,13 @@
 
 		return this.each(make);
 	};
+	
+	$(function(){
+		if(css){
+			$('head').append($('<style>').text(css));
+		}
+	});
+	
 })(jQuery);
+
+var css = '//{replace:css}';
