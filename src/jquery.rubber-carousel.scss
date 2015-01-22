@@ -1,29 +1,36 @@
 .rubber-carousel{
+	display: none;
+	
+	$b: &;
 
-	*{
+	&__wrapper{
+		overflow: hidden;
+	}
+	
+	&__wrap{
+		white-space: nowrap;
+	}
+
+	&__item{
+		display: inline-block;
+		vertical-align: top;
+		white-space: normal;
+	}
+	
+	&__list{
 		position: relative;
 	}
-
-	.wrapper{
-		overflow: hidden;
-
-		> div{
-			white-space: nowrap;
-		}
-	}
-
-	&:not(.-js-using){
-		.wrapper > div > div{
+	
+	&.is-css-animation{
+		#{$b}__list{
 			-webkit-transition: .5s left ease;
 			-moz-transition: .5s left ease;
 			-o-transition: .5s left ease;
 			transition: .5s left ease;
 		}
 	}
-
-	.item{
-		display: inline-block;
-		vertical-align: top;
-		white-space: normal;
+	
+	&.is-init{
+		display: block;
 	}
 }

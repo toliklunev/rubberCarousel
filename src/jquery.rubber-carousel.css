@@ -1,20 +1,2 @@
-.rubber_carousel * {
-  position: relative;
-}
-.rubber_carousel .wrapper {
-  overflow: hidden;
-}
-.rubber_carousel .wrapper > div {
-  white-space: nowrap;
-}
-.rubber_carousel:not(.-js-using) .wrapper > div > div {
-  -webkit-transition: .5s left ease;
-  -moz-transition: .5s left ease;
-  -o-transition: .5s left ease;
-  transition: .5s left ease;
-}
-.rubber_carousel .item {
-  display: inline-block;
-  vertical-align: top;
-  white-space: normal;
-}
+.rubber-carousel{display:none}.rubber-carousel__wrapper{overflow:hidden}.rubber-carousel__wrap{white-space:nowrap}.rubber-carousel__item{display:inline-block;vertical-align:top;white-space:normal}.rubber-carousel__list{position:relative}.rubber-carousel.is-css-animation .rubber-carousel__list{-webkit-transition:.5s left ease;-moz-transition:.5s left ease;-o-transition:.5s left ease;transition:.5s left ease}.rubber-carousel.is-init{display:block}
+/*# sourceMappingURL=jquery.rubber-carousel.css.map */

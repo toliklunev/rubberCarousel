@@ -11,8 +11,9 @@
 			start             : 0,
 			duration          : 500,
 			easing            : 'swing',
-			wrap              : 'normal',
-			prefix            : false,
+			wrap              : 'normal', // normal | both | circular
+			animation         : 'css', // css | js 
+			// prefix            : false,
 			keybind           : false,
 			buttons           : false,
 			pagination        : false,
@@ -22,7 +23,6 @@
 			abort_on_error    : true,
 			min_item_width    : false,
 			disable_buttons   : true,
-			js_using          : false,
 			counter           : false, // TODO
 			auto              : false, // TODO
 			before: function(){}
@@ -58,10 +58,14 @@
 			var current     = configuration.start;
 			var max_current = items_size - visible;
 
-			var prefix      = configuration.prefix ? 'rubber_сarousel__' : '';
-
+			var name        = 'rubber-carousel';
+			var prefix      = name + '__';
+			
+			$carousel.addClass(name);
 			$wrapper.addClass(prefix + 'wrapper');
-			$items.addClass(prefix + 'item');			
+			$wrap.addClass(prefix + 'wrap');
+			$list.addClass(prefix + 'list');
+			$items.addClass(prefix + 'item');
 
 			if(configuration.pagination){
 				var $pagination, $pagination_items;
@@ -165,11 +169,11 @@
 			}
 
 			$buttons.bind('disable', function(){
-				$(this).addClass(prefix + 'disabled').attr('disabled', true);
+				$(this).addClass('is-disabled').attr('disabled', true);
 			});
 
 			$buttons.bind('enable', function(){
-				$(this).removeClass(prefix + 'disabled').attr('disabled', false)
+				$(this).removeClass('is-disabled').attr('disabled', false)
 			});
 
 			if(configuration.keybind){
@@ -276,7 +280,7 @@
 				/* Карусель цикличиская */
 				case 'circular':
 
-					configuration.js_using = true;
+					configuration.animation = 'js';
 
 					var spin = function(to){
 						// to %= items_size;
@@ -353,10 +357,6 @@
 					break;
 			}
 
-			if(configuration.js_using){
-				$carousel.addClass(prefix + '-js-using');
-			}
-
 			/* Крутилка */
 			$carousel.bind('spin', function(e, to, noanim){
 
@@ -384,7 +384,7 @@
 					.removeClass('active');
 				}
 
-				if(configuration.js_using){
+				if(configuration.animation == 'js'){
 					$list[noanim ? 'css' : 'animate']({
 						left : left + '%'
 					}, {
@@ -442,10 +442,14 @@
 					$(window).unbind('keyup', keyup);
 				}
 
-				if(configuration.js_using){
-					$carousel.removeClass(prefix + '-js-using');
+				if(configuration.animation == 'css'){
+					$carousel.removeClass('is-css-animation');
 				}
 			});
+			
+			if(configuration.animation == 'css'){
+				$carousel.addClass('is-css-animation');
+			}
 
 			var spin_prev = function(){
 				$carousel.trigger('spin', 'prev');
@@ -460,6 +464,8 @@
 			$carousel.bind('next', spin_next);
 			$btn_prev.click(spin_prev);
 			$btn_next.click(spin_next);
+			
+			$carousel.addClass('is-init');
 
 			// $(window).resize(function(){
 			// 	$carousel.trigger('carousel.resize');
